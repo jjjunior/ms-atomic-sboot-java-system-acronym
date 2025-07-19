@@ -2,6 +2,7 @@ package br.com.jstack.system.acronym.framework.adapter.input.rest;
 
 import java.util.List;
 
+import br.com.jstack.system.acronym.api.SystemAcronymApi;
 import br.com.jstack.system.acronym.application.usecase.CreateUseCase;
 import br.com.jstack.system.acronym.application.usecase.DeleteByIdUseCase;
 import br.com.jstack.system.acronym.application.usecase.RetrieveAllUseCase;
@@ -9,7 +10,6 @@ import br.com.jstack.system.acronym.application.usecase.RetrieveByIdUseCase;
 import br.com.jstack.system.acronym.application.usecase.UpdateUseCase;
 import br.com.jstack.system.acronym.domain.entity.SystemAcronym;
 import br.com.jstack.system.acronym.framework.mapper.SystemAcronymMapper;
-import br.com.jstack.system.acronym.api.SystemAcronymApi;
 import br.com.jstack.system.acronym.model.SystemAcronymRequest;
 import br.com.jstack.system.acronym.model.SystemAcronymResponse;
 import lombok.RequiredArgsConstructor;

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import br.com.jstack.system.acronym.api.BusinessDomainApi;
 import br.com.jstack.system.acronym.application.usecase.CreateUseCase;
 import br.com.jstack.system.acronym.application.usecase.DeleteByIdUseCase;
 import br.com.jstack.system.acronym.application.usecase.RetrieveAllUseCase;
@@ -12,7 +13,6 @@ import br.com.jstack.system.acronym.application.usecase.UpdateUseCase;
 import br.com.jstack.system.acronym.domain.entity.BusinessDomain;
 import br.com.jstack.system.acronym.domain.entity.BusinessUnit;
 import br.com.jstack.system.acronym.framework.mapper.BusinessDomainMapper;
-import br.com.jstack.system.acronym.api.BusinessDomainApi;
 import br.com.jstack.system.acronym.model.BusinessDomainRequest;
 import br.com.jstack.system.acronym.model.BusinessDomainResponse;
 import lombok.RequiredArgsConstructor;

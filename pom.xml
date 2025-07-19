@@ -15,7 +15,8 @@
 
     <properties>
         <package>${project.groupId}</package>
-        <openapi.inputSpec>${project.basedir}/src/main/resources/api/contract/ms-atomic-sboot-java-system-acronym.yaml</openapi.inputSpec>
+        <openapi.inputSpec>${project.basedir}/src/main/resources/api/contract/ms-atomic-sboot-java-system-acronym.yaml
+        </openapi.inputSpec>
     </properties>
 
     <dependencies>
