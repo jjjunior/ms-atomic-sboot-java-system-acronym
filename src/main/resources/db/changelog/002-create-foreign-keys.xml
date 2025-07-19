@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="
+        http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- ============================================= -->
+    <!-- FKs: business_unit_domain (N:N)               -->
+    <!-- ============================================= -->
+    <changeSet id="fk-business-unit-domain-001" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="business_unit_domain"
+                baseColumnNames="business_unit_id"
+                referencedTableName="business_unit"
+                referencedColumnNames="business_unit_id"
+                constraintName="fk_bunit_domain_unit"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="fk-business-unit-domain-002" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="business_unit_domain"
+                baseColumnNames="business_domain_id"
+                referencedTableName="business_domain"
+                referencedColumnNames="business_domain_id"
+                constraintName="fk_bunit_domain_domain"
+                onDelete="CASCADE"/>
+    </changeSet>
+
+    <!-- ============================================= -->
+    <!-- FKs: system_acronym                           -->
+    <!-- ============================================= -->
+    <changeSet id="fk-system-acronym-001" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym"
+                baseColumnNames="domain_id"
+                referencedTableName="business_domain"
+                referencedColumnNames="business_domain_id"
+                constraintName="fk_system_acronym_domain_id"/>
+    </changeSet>
+
+    <changeSet id="fk-system-acronym-002" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym"
+                baseColumnNames="type_id"
+                referencedTableName="system_acronym_type"
+                referencedColumnNames="system_acronym_type_id"
+                constraintName="fk_system_acronym_type_id"/>
+    </changeSet>
+
+    <changeSet id="fk-system-acronym-003" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym"
+                baseColumnNames="dev_team_id"
+                referencedTableName="team"
+                referencedColumnNames="team_id"
+                constraintName="fk_system_acronym_dev_team_id"/>
+    </changeSet>
+
+    <changeSet id="fk-system-acronym-004" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym"
+                baseColumnNames="biz_team_id"
+                referencedTableName="team"
+                referencedColumnNames="team_id"
+                constraintName="fk_system_acronym_biz_team_id"/>
+    </changeSet>
+
+    <!-- ============================================= -->
+    <!-- FKs: system_acronym_responsibility            -->
+    <!-- ============================================= -->
+    <changeSet id="fk-system-acronym-resp-001" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym_responsibility"
+                baseColumnNames="acronym_id"
+                referencedTableName="system_acronym"
+                referencedColumnNames="system_acronym_id"
+                constraintName="fk_system_acronym_responsibility_acronym_id"/>
+    </changeSet>
+
+    <changeSet id="fk-system-acronym-resp-002" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym_responsibility"
+                baseColumnNames="responsibility_type_id"
+                referencedTableName="responsibility_type"
+                referencedColumnNames="responsibility_type_id"
+                constraintName="fk_system_acronym_responsibility_responsibility_type_id"/>
+    </changeSet>
+
+    <changeSet id="fk-system-acronym-resp-003" author="jota">
+        <addForeignKeyConstraint
+                baseTableName="system_acronym_responsibility"
+                baseColumnNames="team_id"
+                referencedTableName="team"
+                referencedColumnNames="team_id"
+                constraintName="fk_system_acronym_responsibility_team_id"/>
+    </changeSet>
+
+</databaseChangeLog>

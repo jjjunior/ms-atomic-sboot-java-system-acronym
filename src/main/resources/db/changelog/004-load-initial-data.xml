@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Business Unit -->
+    <changeSet id="load-01" author="jota">
+        <insert tableName="business_unit">
+            <column name="business_unit_id" valueNumeric="1"/>
+            <column name="name" value="Unidade de Negócio 1"/>
+            <column name="description" value="Descrição da Unidade 1"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="business_unit">
+            <column name="business_unit_id" valueNumeric="2"/>
+            <column name="name" value="Unidade de Negócio 2"/>
+            <column name="description" value="Descrição da Unidade 2"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- Business Domain -->
+    <changeSet id="load-02" author="jota">
+        <insert tableName="business_domain">
+            <column name="business_domain_id" valueNumeric="1"/>
+            <column name="name" value="Domínio 1"/>
+            <column name="description" value="Descrição do Domínio 1"/>
+            <column name="unit_id" valueNumeric="1"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="business_domain">
+            <column name="business_domain_id" valueNumeric="2"/>
+            <column name="name" value="Domínio 2"/>
+            <column name="description" value="Descrição do Domínio 2"/>
+            <column name="unit_id" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- System Acronym Type -->
+    <changeSet id="load-03" author="jota">
+        <insert tableName="system_acronym_type">
+            <column name="system_acronym_type_id" valueNumeric="1"/>
+            <column name="name" value="Backend"/>
+            <column name="description" value="Serviço de Backend"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="system_acronym_type">
+            <column name="system_acronym_type_id" valueNumeric="2"/>
+            <column name="name" value="Frontend"/>
+            <column name="description" value="Aplicação Web"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- Team -->
+    <changeSet id="load-04" author="jota">
+        <insert tableName="team">
+            <column name="team_id" valueNumeric="1"/>
+            <column name="name" value="Time de Desenvolvimento"/>
+            <column name="description" value="Responsável pelo desenvolvimento"/>
+        </insert>
+        <insert tableName="team">
+            <column name="team_id" valueNumeric="2"/>
+            <column name="name" value="Time de Negócio"/>
+            <column name="description" value="Responsável pelas regras de negócio"/>
+        </insert>
+    </changeSet>
+
+    <!-- Responsibility Type -->
+    <changeSet id="load-06" author="jota">
+        <insert tableName="responsibility_type">
+            <column name="responsibility_type_id" valueNumeric="1"/>
+            <column name="name" value="Dono Técnico"/>
+            <column name="description" value="Responsável técnico pela solução"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="responsibility_type">
+            <column name="responsibility_type_id" valueNumeric="2"/>
+            <column name="name" value="Dono de Negócio"/>
+            <column name="description" value="Responsável pelo processo de negócio"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- System Acronym -->
+    <changeSet id="load-07" author="jota">
+        <insert tableName="system_acronym">
+            <column name="system_acronym_id" valueNumeric="1"/>
+            <column name="acronym" value="HUBM"/>
+            <column name="name" value="Hub de Mensagens"/>
+            <column name="domain_id" valueNumeric="1"/>
+            <column name="type_id" valueNumeric="1"/>
+            <column name="dev_team_id" valueNumeric="1"/>
+            <column name="biz_team_id" valueNumeric="2"/>
+            <column name="product_owner_name" value="João Maranhão"/>
+            <column name="contact_email" value="contato@hubm.com"/>
+            <column name="critical_for_operation" valueBoolean="true"/>
+            <column name="has_personal_data" valueBoolean="false"/>
+            <column name="security_level" value="Alta"/>
+            <column name="compliance_requirements" value="LGPD"/>
+            <column name="documentation_url" value="https://hubm.docs"/>
+            <column name="lifecycle_status" value="Ativo"/>
+            <column name="go_live_date" valueDate="2024-01-15"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+    <!-- System Acronym Responsibility -->
+    <changeSet id="load-08" author="jota">
+        <insert tableName="system_acronym_responsibility">
+            <column name="system_acronym_responsibility_id" valueNumeric="1"/>
+            <column name="acronym_id" valueNumeric="1"/>
+            <column name="responsibility_id" valueNumeric="1"/>
+            <column name="team_id" valueNumeric="1"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+        <insert tableName="system_acronym_responsibility">
+            <column name="system_acronym_responsibility_id" valueNumeric="2"/>
+            <column name="acronym_id" valueNumeric="1"/>
+            <column name="responsibility_id" valueNumeric="2"/>
+            <column name="team_id" valueNumeric="2"/>
+            <column name="active" valueBoolean="true"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
