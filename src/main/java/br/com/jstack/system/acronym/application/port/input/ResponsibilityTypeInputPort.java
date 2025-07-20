@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class ResponsibilityTypeInputPort implements CreateUseCase<ResponsibilityType>,
+public class ResponsibilityTypeInputPort implements
+	CreateUseCase<ResponsibilityType>,
 	RetrieveByIdUseCase<ResponsibilityType, Long>,
 	RetrieveAllUseCase<ResponsibilityType>,
 	UpdateUseCase<ResponsibilityType>,

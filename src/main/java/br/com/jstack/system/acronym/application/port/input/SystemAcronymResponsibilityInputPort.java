@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class SystemAcronymResponsibilityInputPort implements CreateUseCase<SystemAcronymResponsibility>,
+public class SystemAcronymResponsibilityInputPort implements
+	CreateUseCase<SystemAcronymResponsibility>,
 	RetrieveByIdUseCase<SystemAcronymResponsibility, Long>,
 	RetrieveAllUseCase<SystemAcronymResponsibility>,
 	UpdateUseCase<SystemAcronymResponsibility>,

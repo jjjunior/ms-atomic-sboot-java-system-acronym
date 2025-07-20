@@ -15,12 +15,14 @@ import br.com.jstack.system.acronym.domain.policy.PolicyResolver;
 import br.com.jstack.system.acronym.domain.policy.ValidationPolicy;
 import br.com.jstack.system.acronym.domain.vo.OperationType;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BusinessDomainInputPort implements CreateUseCase<BusinessDomain>,
+public class BusinessDomainInputPort implements
+	CreateUseCase<BusinessDomain>,
 	RetrieveByIdUseCase<BusinessDomain, Long>,
 	RetrieveAllUseCase<BusinessDomain>,
 	UpdateUseCase<BusinessDomain>,

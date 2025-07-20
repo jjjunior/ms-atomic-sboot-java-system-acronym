@@ -30,12 +30,12 @@ public class Team {
 	@Column(name = "team_id")
 	private Long id;
 	
-	@NotBlank(message = "The name must not be blank.")
+	@NotBlank(message = "The name of the Team must not be blank.")
 	@Size(max = 100, message = "The name must be at most 100 characters.")
 	private String name;
 	
-	@NotBlank(message = "The description must not be blank.")
-	@Size(max = 255, message = "The description must be at most 255 characters.")
+	@NotBlank(message = "The description of the Team must not be blank.")
+	@Size(max = 255, message = "The description of the Team must be at most 255 characters.")
 	private String description;
 	
 	@Embedded
