@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class TeamInputPort implements CreateUseCase<Team>,
+public class TeamInputPort implements
+	CreateUseCase<Team>,
 	RetrieveByIdUseCase<Team, Long>,
 	RetrieveAllUseCase<Team>,
 	UpdateUseCase<Team>,

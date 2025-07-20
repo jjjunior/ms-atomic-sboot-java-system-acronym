@@ -55,6 +55,6 @@ public class BusinessDomain {
 	@ManyToMany(mappedBy = "businessDomains", fetch = FetchType.LAZY)
 	private List<BusinessUnit> businessUnits = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "businessDomain", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "businessDomain", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<BusinessUnitDomain> businessUnitDomains = new ArrayList<>();
 }

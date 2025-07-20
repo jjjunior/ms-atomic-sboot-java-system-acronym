@@ -25,12 +25,12 @@ public class BusinessUnitDomain {
 	@EmbeddedId
 	private BusinessUnitDomainId id;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("businessUnitId")
 	@JoinColumn(name = "business_unit_id", nullable = false)
 	private BusinessUnit businessUnit;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@MapsId("businessDomainId")
 	@JoinColumn(name = "business_domain_id", nullable = false)
 	private BusinessDomain businessDomain;

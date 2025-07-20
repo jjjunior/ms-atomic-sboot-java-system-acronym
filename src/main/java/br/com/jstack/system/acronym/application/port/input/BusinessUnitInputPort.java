@@ -19,7 +19,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class BusinessUnitInputPort implements CreateUseCase<BusinessUnit>,
+public class BusinessUnitInputPort implements
+	CreateUseCase<BusinessUnit>,
 	RetrieveByIdUseCase<BusinessUnit, Long>,
 	RetrieveAllUseCase<BusinessUnit>,
 	UpdateUseCase<BusinessUnit>,

@@ -55,7 +55,7 @@ public class BusinessUnit {
 	@Embedded
 	private Audit audit = new Audit();
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(
 		name = "business_unit_domain",
 		joinColumns = @JoinColumn(name = "business_unit_id"),
@@ -64,6 +64,6 @@ public class BusinessUnit {
 	)
 	private List<BusinessDomain> businessDomains = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "businessUnit", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<BusinessUnitDomain> businessUnitDomains = new ArrayList<>();
 }
