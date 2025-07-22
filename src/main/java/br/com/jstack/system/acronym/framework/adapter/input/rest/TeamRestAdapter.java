@@ -12,6 +12,7 @@ import br.com.jstack.system.acronym.domain.entity.Team;
 import br.com.jstack.system.acronym.framework.mapper.TeamMapper;
 import br.com.jstack.system.acronym.model.TeamRequest;
 import br.com.jstack.system.acronym.model.TeamResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -56,7 +57,7 @@ public class TeamRestAdapter implements TeamApi {
 	}
 	
 	@Override
-	public ResponseEntity<TeamResponse> updateTeam(Long id, TeamRequest request) {
+	public ResponseEntity<TeamResponse> updateTeam(Long id,TeamRequest request) {
 		Team team = mapper.toDomain(request);
 		team.setId(id);
 		Team         updated  = updateUseCase.update(team);
