@@ -31,7 +31,7 @@ public class SystemAcronymResponsibility {
 	@Column(name = "system_acronym_responsibility_id")
 	private Long id;
 	
-	@Column(name = "name", nullable = false, length = 150)
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@Column(name = "description", columnDefinition = "text")

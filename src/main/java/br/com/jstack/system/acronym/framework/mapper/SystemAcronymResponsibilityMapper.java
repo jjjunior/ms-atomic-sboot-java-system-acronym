@@ -14,21 +14,13 @@ public interface SystemAcronymResponsibilityMapper {
 	@Mapping(target = "acronym.id", source = "acronymId")
 	@Mapping(target = "responsibilityType.id", source = "responsibilityId")
 	@Mapping(target = "team.id", source = "teamId")
-	@Mapping(target = "name", source = "name")
-	@Mapping(target = "description", source = "description")
-	@Mapping(target = "active", source = "active")
 	SystemAcronymResponsibility toDomain(SystemAcronymResponsibilityRequest request);
 	
-	@Mapping(target = "id", source = "id")
-	@Mapping(target = "name", source = "name")
-	@Mapping(target = "description", source = "description")
-	@Mapping(target = "acronymId", source = "acronym.id")
-	@Mapping(target = "responsibilityId", source = "responsibilityType.id")
-	@Mapping(target = "teamId", source = "team.id")
-	@Mapping(target = "active", source = "active")
-	@Mapping(target = "createdBy", source = "audit.createdBy")
-	@Mapping(target = "createdAt", source = "audit.createdAt")
-	@Mapping(target = "updatedBy", source = "audit.updatedBy")
-	@Mapping(target = "updatedAt", source = "audit.updatedAt")
+	@Mapping(target = "systemAcronymResponsibility.name", source = "name")
+	@Mapping(target = "systemAcronymResponsibility.description", source = "description")
+	@Mapping(target = "systemAcronymResponsibility.acronymId", source = "acronym.id")
+	@Mapping(target = "systemAcronymResponsibility.responsibilityId", source = "responsibilityType.id")
+	@Mapping(target = "systemAcronymResponsibility.teamId", source = "team.id")
+	@Mapping(target = "systemAcronymResponsibility.active", source = "active")
 	SystemAcronymResponsibilityResponse toResponse(SystemAcronymResponsibility domain);
 }
