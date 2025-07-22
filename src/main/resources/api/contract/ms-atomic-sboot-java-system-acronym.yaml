@@ -1363,31 +1363,26 @@ components:
       type: object
       required:
         - name
+        - description
       properties:
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         active:
           type: boolean
     SystemAcronymTypeResponse:
-      allOf:
-        - $ref: '#/components/schemas/SystemAcronymTypeRequest'
-        - type: object
-          properties:
-            id:
-              type: integer
-              format: int64
-            created_by:
-              type: string
-            created_at:
-              type: string
-              format: date-time
-            updated_by:
-              type: string
-            updated_at:
-              type: string
-              format: date-time
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        SystemAcronymType:
+          $ref: '#/components/schemas/SystemAcronymTypeRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
     SystemAcronymRequest:
       type: object
       required:
@@ -1395,10 +1390,13 @@ components:
       properties:
         acronym:
           type: string
+          minLength: 1
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         domainId:
           type: integer
           format: int64
@@ -1435,80 +1433,60 @@ components:
           format: date
         active:
           type: boolean
-        createdBy:
-          type: string
     SystemAcronymResponse:
-      allOf:
-        - $ref: '#/components/schemas/SystemAcronymRequest'
-        - type: object
-          properties:
-            id:
-              type: integer
-              format: int64
-            created_at:
-              type: string
-              format: date-time
-            updated_by:
-              type: string
-            updated_at:
-              type: string
-              format: date-time
+      properties:
+        id:
+          type: integer
+          format: int64
+        SystemAcronym:
+          $ref: '#/components/schemas/SystemAcronymRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
     TeamRequest:
       type: object
       required:
         - name
+        - description
       properties:
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
     TeamResponse:
-      allOf:
-        - $ref: '#/components/schemas/TeamRequest'
-        - type: object
-          properties:
-            id:
-              type: integer
-              format: int64
-            createdAt:
-              type: string
-              format: date-time
-            createdBy:
-              type: string
-            updatedAt:
-              type: string
-              format: date-time
-            updatedBy:
-              type: string
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        Team:
+          $ref: '#/components/schemas/TeamRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
     ResponsibilityTypeRequest:
       type: object
       required:
         - name
+        - description
       properties:
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         active:
           type: boolean
     ResponsibilityTypeResponse:
-      allOf:
-        - $ref: '#/components/schemas/ResponsibilityTypeRequest'
-        - type: object
-          properties:
-            id:
-              type: integer
-              format: int64
-            createdAt:
-              type: string
-              format: date-time
-            createdBy:
-              type: string
-            updatedAt:
-              type: string
-              format: date-time
-            updatedBy:
-              type: string
+      properties:
+        id:
+          type: integer
+          format: int64
+        ResponsibilityType:
+          $ref: '#/components/schemas/ResponsibilityTypeRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
     SystemAcronymResponsibilityRequest:
       type: object
       required:
@@ -1521,8 +1499,10 @@ components:
           format: int64
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         responsibilityId:
           type: integer
           format: int64
@@ -1532,27 +1512,14 @@ components:
         active:
           type: boolean
     SystemAcronymResponsibilityResponse:
-      allOf:
-        - $ref: '#/components/schemas/SystemAcronymResponsibilityRequest'
-        - type: object
-          properties:
-            id:
-              type: integer
-              format: int64
-            name:
-              type: string
-            description:
-              type: string
-            createdAt:
-              type: string
-              format: date-time
-            createdBy:
-              type: string
-            updatedAt:
-              type: string
-              format: date-time
-            updatedBy:
-              type: string
+      properties:
+        id:
+          type: integer
+          format: int64
+        SystemAcronymResponsibility:
+          $ref: '#/components/schemas/SystemAcronymResponsibilityRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
     BusinessDomainRequest:
       type: object
       required:
@@ -1563,8 +1530,10 @@ components:
       properties:
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         active:
           type: boolean
         unitIds:
@@ -1580,24 +1549,18 @@ components:
           format: int64
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
+        active:
+          type: boolean
         businessUnits:
           type: array
           items:
             $ref: '#/components/schemas/BusinessUnitResponse'
-        active:
-          type: boolean
-        createdBy:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        updatedBy:
-          type: string
-        updatedAt:
-          type: string
-          format: date-time
+        Audit:
+          $ref: '#/components/schemas/Audit'
     BusinessUnitRequest:
       type: object
       required:
@@ -1605,8 +1568,10 @@ components:
       properties:
         name:
           type: string
+          x-field-extra-annotation: '@Size(min=5,max=30, message = "{br.com.jstack.request.size}")'
         description:
           type: string
+          x-field-extra-annotation: '@Size(min=10,max=255, message = "{br.com.jstack.request.size}")'
         active:
           type: boolean
     BusinessUnitResponse:
@@ -1615,12 +1580,13 @@ components:
         id:
           type: integer
           format: int64
-        name:
-          type: string
-        description:
-          type: string
-        active:
-          type: boolean
+        BusinessUnit:
+          $ref: '#/components/schemas/BusinessUnitRequest'
+        Audit:
+          $ref: '#/components/schemas/Audit'
+    Audit:
+      type: object
+      properties:
         createdBy:
           type: string
         createdAt:
@@ -1635,25 +1601,29 @@ components:
       type: object
       required:
         - timestamp
-        - status
-        - error
-        - message
+        - codeStatus
+        - messageStatus
+        - errors
         - path
       properties:
         timestamp:
           type: string
           format: date-time
           example: '2025-06-25T12:34:56Z'
-        status:
+        codeStatus:
           type: integer
-          format: int64
+          format: int32
           example: 40X
-        error:
-          type: string
-          example: Bad Request or Not Found or Not Authorized or Internal Server Error
-        message:
+        messageStatus:
           type: string
           example: Invalid input data
+        errors:
+          type: array
+          items:
+            type: string
+          example:
+            - "name: O campo deve conter no mínimo 1 caracteres."
+            - "unitIds: A lista não pode estar vazia."
         path:
           type: string
           example: /v1/xxx

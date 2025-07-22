@@ -16,8 +16,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,24 +35,21 @@ public class BusinessDomain {
 	@Column(name = "business_domain_id")
 	private Long id;
 	
-	@NotBlank(message = "Name cannot be blank")
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false)
 	private String name;
 	
-	@NotBlank(message = "Description cannot be blank")
 	@Column(nullable = false)
 	private String description;
 	
-	@NotNull(message = "Active status cannot be null")
 	@Column(nullable = false)
 	private Boolean active;
 	
 	@Embedded
 	private Audit audit = new Audit();
 	
-	@ManyToMany(mappedBy = "businessDomains", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "businessDomains", fetch = FetchType.EAGER)
 	private List<BusinessUnit> businessUnits = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "businessDomain", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "businessDomain", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<BusinessUnitDomain> businessUnitDomains = new ArrayList<>();
 }

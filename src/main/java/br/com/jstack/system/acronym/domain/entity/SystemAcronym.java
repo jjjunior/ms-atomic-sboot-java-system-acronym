@@ -36,10 +36,10 @@ public class SystemAcronym {
 	@Column(name = "system_acronym_id")
 	private Long id;
 	
-	@Column(name = "acronym", nullable = false, length = 50)
+	@Column(name = "acronym", nullable = false)
 	private String acronym;
 	
-	@Column(name = "name", nullable = false, length = 150)
+	@Column(name = "name", nullable = false)
 	private String name;
 	
 	@Column(name = "description", columnDefinition = "text")
@@ -61,10 +61,10 @@ public class SystemAcronym {
 	@JoinColumn(name = "biz_team_id")
 	private Team bizTeam;
 	
-	@Column(name = "product_owner_name", length = 100)
+	@Column(name = "product_owner_name")
 	private String productOwnerName;
 	
-	@Column(name = "contact_email", length = 100)
+	@Column(name = "contact_email")
 	private String contactEmail;
 	
 	@Column(name = "critical_for_operation")
@@ -73,7 +73,7 @@ public class SystemAcronym {
 	@Column(name = "has_personal_data")
 	private Boolean hasPersonalData;
 	
-	@Column(name = "security_level", length = 50)
+	@Column(name = "security_level")
 	private String securityLevel;
 	
 	@Column(name = "compliance_requirements", columnDefinition = "text")
@@ -82,7 +82,7 @@ public class SystemAcronym {
 	@Column(name = "documentation_url", columnDefinition = "text")
 	private String documentationUrl;
 	
-	@Column(name = "lifecycle_status", length = 50)
+	@Column(name = "lifecycle_status")
 	private String lifecycleStatus;
 	
 	@Column(name = "go_live_date")

@@ -9,8 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +28,8 @@ public class Team {
 	@Column(name = "team_id")
 	private Long id;
 	
-	@NotBlank(message = "The name of the Team must not be blank.")
-	@Size(max = 100, message = "The name must be at most 100 characters.")
 	private String name;
 	
-	@NotBlank(message = "The description of the Team must not be blank.")
-	@Size(max = 255, message = "The description of the Team must be at most 255 characters.")
 	private String description;
 	
 	@Embedded
