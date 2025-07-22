@@ -11,19 +11,11 @@ public interface ResponsibilityMapper {
 	
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "audit", ignore = true)
-	@Mapping(target = "name", source = "name")
-	@Mapping(target = "description", source = "description")
-	@Mapping(target = "active", source = "active")
 	ResponsibilityType toDomain(ResponsibilityTypeRequest request);
 	
-	@Mapping(target = "id", source = "id")
-	@Mapping(target = "name", source = "name")
-	@Mapping(target = "description", source = "description")
-	@Mapping(target = "active", source = "active")
-	@Mapping(target = "createdBy", source = "audit.createdBy")
-	@Mapping(target = "createdAt", source = "audit.createdAt")
-	@Mapping(target = "updatedBy", source = "audit.updatedBy")
-	@Mapping(target = "updatedAt", source = "audit.updatedAt")
+	@Mapping(target = "responsibilityType.name", source = "name")
+	@Mapping(target = "responsibilityType.description", source = "description")
+	@Mapping(target = "responsibilityType.active", source = "active")
 	ResponsibilityTypeResponse toResponse(ResponsibilityType domain);
 	
 }
