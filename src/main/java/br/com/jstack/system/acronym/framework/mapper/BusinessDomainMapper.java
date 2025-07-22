@@ -16,15 +16,12 @@ import org.mapstruct.Named;
 @Mapper(componentModel = "spring")
 public interface BusinessDomainMapper {
 	
+	@Mapping(target = "businessUnits", ignore = true)
 	@Mapping(target = "businessUnitDomains", ignore = true)
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "audit", ignore = true)
 	BusinessDomain toDomain(BusinessDomainRequest request);
 	
-	@Mapping(target = "updatedBy", source = "audit.updatedBy")
-	@Mapping(target = "updatedAt", source = "audit.updatedAt")
-	@Mapping(target = "createdBy", source = "audit.createdBy")
-	@Mapping(target = "createdAt", source = "audit.createdAt")
 	@Mapping(target = "businessUnits", source = "businessUnitDomains", qualifiedByName = "mapUnitsFromRelations")
 	BusinessDomainResponse toResponse(BusinessDomain domain);
 	
@@ -36,9 +33,8 @@ public interface BusinessDomainMapper {
 			.collect(Collectors.toList());
 	}
 	
-	@Mapping(target = "updatedBy", source = "audit.updatedBy")
-	@Mapping(target = "updatedAt", source = "audit.updatedAt")
-	@Mapping(target = "createdBy", source = "audit.createdBy")
-	@Mapping(target = "createdAt", source = "audit.createdAt")
+	@Mapping(target = "businessUnit.description", source = "description")
+	@Mapping(target = "businessUnit.active", source = "active")
+	@Mapping(target = "businessUnit.name", source = "name")
 	BusinessUnitResponse toBusinessUnitResponse(BusinessUnit businessUnit);
 }

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import br.com.jstack.system.acronym.model.ErrorResponse;
-import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -29,58 +28,105 @@ public class RestExceptionHandler {
 			.map(f -> f.getField() + ": " + f.getDefaultMessage())
 			.toList();
 		
-		String message = "Validation error on request body";
+		ErrorResponse error = new ErrorResponse(
+			LocalDateTime.now(),
+			HttpStatus.BAD_REQUEST.value(),
+			"Validation error on request body",
+			details,
+			getPath(request)
+		);
 		
-		return buildResponse(HttpStatus.BAD_REQUEST, message, details.toString(), request);
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(error);
 	}
 	
 	@ExceptionHandler(ConstraintViolationException.class)
 	public ResponseEntity<ErrorResponse> handleValidationParam(ConstraintViolationException ex, WebRequest request) {
 		List<String> violations = ex.getConstraintViolations()
 			.stream()
-			.map(ConstraintViolation::getMessage)
+			.map(v -> v.getPropertyPath() + ": " + v.getMessage())
 			.toList();
 		
-		return buildResponse(HttpStatus.BAD_REQUEST, "Constraint validation failed", String.join(", ", violations), request);
+		ErrorResponse error = new ErrorResponse(
+			LocalDateTime.now(),
+			HttpStatus.BAD_REQUEST.value(),
+			"Constraint validation failed",
+			violations,
+			getPath(request)
+		);
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(error);
 	}
 	
 	@ExceptionHandler(MethodArgumentTypeMismatchException.class)
 	public ResponseEntity<ErrorResponse> handleParamMismatch(MethodArgumentTypeMismatchException ex, WebRequest request) {
-		String message = String.format("Parameter '%s' should be of type '%s'",
-			ex.getName(), ex.getRequiredType().getSimpleName());
+		String detail = String.format("Parâmetro '%s' deve ser do tipo '%s'",
+			ex.getName(), ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "desconhecido");
 		
-		return buildResponse(HttpStatus.BAD_REQUEST, "Parameter type mismatch", message, request);
+		ErrorResponse error = new ErrorResponse(
+			LocalDateTime.now(),
+			HttpStatus.BAD_REQUEST.value(),
+			"Parameter type mismatch",
+			List.of(detail),
+			getPath(request)
+		);
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(error);
 	}
 	
 	@ExceptionHandler(NoSuchElementException.class)
 	public ResponseEntity<ErrorResponse> handleNotFound(NoSuchElementException ex, WebRequest request) {
-		return buildResponse(HttpStatus.NOT_FOUND, "Resource not found", ex.getMessage(), request);
+		ErrorResponse error = new ErrorResponse(
+			LocalDateTime.now(),
+			HttpStatus.NOT_FOUND.value(),
+			"Resource not found",
+			List.of(ex.getMessage()),
+			getPath(request)
+		);
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(error);
 	}
 	
 	@ExceptionHandler(IllegalArgumentException.class)
 	public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException ex, WebRequest request) {
-		return buildResponse(HttpStatus.BAD_REQUEST, "Invalid argument", ex.getMessage(), request);
+		ErrorResponse error = new ErrorResponse(
+			LocalDateTime.now(),
+			HttpStatus.BAD_REQUEST.value(),
+			"Invalid argument",
+			List.of(ex.getMessage()),
+			getPath(request)
+		);
+		
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(error);
 	}
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleUnexpected(Exception ex, WebRequest request) {
 		log.error("Unhandled exception", ex);
-		return buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, "Unexpected error", ex.getMessage(), request);
-	}
-	
-	private ResponseEntity<ErrorResponse> buildResponse(HttpStatus status, String error, String message, WebRequest request) {
-		String path = request.getDescription(false).replace("uri=", "");
-		ErrorResponse errorResponse = new ErrorResponse(
+		
+		ErrorResponse error = new ErrorResponse(
 			LocalDateTime.now(),
-			(long) status.value(),
-			error,
-			message,
-			path
+			HttpStatus.INTERNAL_SERVER_ERROR.value(),
+			"Unexpected error",
+			List.of(ex.getMessage()),
+			getPath(request)
 		);
 		
-		log.error("[API Error] {} - {}", error, message);
-		return ResponseEntity.status(status)
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 			.contentType(MediaType.APPLICATION_JSON)
-			.body(errorResponse);
+			.body(error);
+	}
+	
+	private String getPath(WebRequest request) {
+		return request.getDescription(false).replace("uri=", "");
 	}
 }
