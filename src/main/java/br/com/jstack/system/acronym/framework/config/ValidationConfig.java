@@ -16,14 +16,6 @@ public class ValidationConfig {
 		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
 		source.setBasename("ValidationMessages");
 		source.setDefaultEncoding("UTF-8");
-		
-		try {
-			String testMessage = source.getMessage("test.key", null, null);
-			log.info("✔ ValidationMessages.properties carregado com sucesso. Exemplo de mensagem: {}", testMessage);
-		} catch (Exception e) {
-			log.error("❌ Falha ao carregar ValidationMessages.properties ou chave 'test.key' não encontrada.", e);
-		}
-		
 		return source;
 	}
 	
