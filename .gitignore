@@ -26,3 +26,5 @@ replay_pid*
 
 /target/
 /.idea/dataSources.xml
+/.idea/aws.xml
+/.idea/codeStyles/codeStyleConfig.xml
