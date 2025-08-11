@@ -17,6 +17,11 @@
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="micronaut-releases" />
+      <option name="name" value="micronaut-releases" />
+      <option name="url" value="https://s01.oss.sonatype.org/content/repositories/releases/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jstack-br.com.jstack.platform" />
       <option name="name" value="jstack-br.com.jstack.platform" />
       <option name="url" value="https://jstack-148206343556.d.codeartifact.us-east-1.amazonaws.com/maven/br.com.jstack.platform/" />
