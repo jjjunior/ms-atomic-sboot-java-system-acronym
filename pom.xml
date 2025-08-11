@@ -5,7 +5,7 @@
     <parent>
         <groupId>br.com.jstack.platform</groupId>
         <artifactId>starter-atomic-spring-boot</artifactId>
-        <version>1.0.12</version>
+        <version>1.0.59</version>
     </parent>
 
     <groupId>br.com.jstack.system.acronym</groupId>
@@ -15,8 +15,7 @@
 
     <properties>
         <package>${project.groupId}</package>
-        <openapi.inputSpec>${project.basedir}/src/main/resources/api/contract/ms-atomic-sboot-java-system-acronym.yaml
-        </openapi.inputSpec>
+        <openapi.inputSpec>${project.basedir}/src/main/resources/api/contract/ms-atomic-sboot-java-system-acronym.yaml</openapi.inputSpec>
     </properties>
 
     <dependencies>
